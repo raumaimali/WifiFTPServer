@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- ══ Header ══ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📡 Personal FTP Server"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#1565C0"
+            android:gravity="center"
+            android:paddingBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="● بند ہے"
+            android:textSize="14sp"
+            android:textColor="#E53935"
+            android:gravity="center"
+            android:paddingBottom="12dp"/>
+
+        <!-- ══ Stats Card ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/card_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="اسپیڈ"
+                    android:textSize="11sp"
+                    android:textColor="#757575"/>
+                <TextView
+                    android:id="@+id/tv_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0 MB/s"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1565C0"/>
+            </LinearLayout>
+
+            <View android:layout_width="1dp" android:layout_height="match_parent"
+                android:background="#E0E0E0"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="کنیکشن"
+                    android:textSize="11sp"
+                    android:textColor="#757575"/>
+                <TextView
+                    android:id="@+id/tv_connections"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 متصل"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#43A047"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ══ IP & QR ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="سرور ایڈریس (ٹیپ کریں کاپی کرنے کے لیے)"
+                android:textSize="12sp"
+                android:textColor="#757575"/>
+
+            <TextView
+                android:id="@+id/tv_ip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ftp://---"
+                android:textSize="16sp"
+                android:textColor="#1565C0"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="#E3F2FD"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/tv_port"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="13sp"
+                android:textColor="#757575"
+                android:layout_marginTop="4dp"/>
+
+            <!-- QR Code -->
+            <ImageView
+                android:id="@+id/iv_qr"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:contentDescription="QR Code"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QR اسکین کریں فوری کنیکٹ ہونے کے لیے"
+                android:textSize="11sp"
+                android:textColor="#9E9E9E"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <!-- ══ Settings Card ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚙ سیٹنگز"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:paddingBottom="8dp"/>
+
+            <!-- Anonymous toggle -->
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingBottom="8dp">
+                <TextView android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="پاسورڈ کے بغیر (Anonymous)"
+                    android:textSize="13sp"
+                    android:textColor="#555555"/>
+                <Switch
+                    android:id="@+id/switch_anon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- Username -->
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="یوزر نیم"
+                android:textSize="12sp"
+                android:textColor="#757575"/>
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="admin"
+                android:textSize="14sp"
+                android:inputType="text"
+                android:background="@drawable/input_bg"
+                android:paddingStart="10dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Password -->
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="پاسورڈ"
+                android:textSize="12sp"
+                android:textColor="#757575"/>
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="1234"
+                android:textSize="14sp"
+                android:inputType="textPassword"
+                android:background="@drawable/input_bg"
+                android:paddingStart="10dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Port -->
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="پورٹ نمبر"
+                android:textSize="12sp"
+                android:textColor="#757575"/>
+            <EditText
+                android:id="@+id/et_port"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="2121"
+                android:textSize="14sp"
+                android:inputType="number"
+                android:background="@drawable/input_bg"
+                android:paddingStart="10dp"/>
+        </LinearLayout>
+
+        <!-- ══ Start/Stop Button ══ -->
+        <Button
+            android:id="@+id/btn_start_stop"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="▶ سرور شروع کریں"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="#1976D2"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- ══ Activity Log ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="12dp">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📋 لاگ"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:paddingBottom="6dp"/>
+
+            <ScrollView
+                android:id="@+id/scroll_log"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+                <TextView
+                    android:id="@+id/tv_log"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ابھی کوئی سرگرمی نہیں..."
+                    android:textSize="11sp"
+                    android:textColor="#555555"
+                    android:fontFamily="monospace"
+                    android:lineSpacingMultiplier="1.4"/>
+            </ScrollView>
+        </LinearLayout>
+
+        <!-- Footer -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal FTP Server v1.0"
+            android:textSize="11sp"
+            android:textColor="#BDBDBD"
+            android:layout_marginTop="16dp"
+            android:paddingBottom="8dp"/>
+
+    </LinearLayout>
+</ScrollView>
